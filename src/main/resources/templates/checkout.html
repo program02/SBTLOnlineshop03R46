@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<body>
+
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Brand</th>
+			<th>Price</th>
+			<th>Date</th>
+			<th>Stock</th>
+			<th>Category</th>
+			<th>Url</th>
+			<th>Quantity</th>
+			<th>Total</th>
+		</tr>
+		<tr th:each="p:${session.addtocartlist}">
+			<td th:text="${p.id}"></td>
+			<td th:text="${p.name}"></td>
+			<td th:text="${p.brand}"></td>
+			<td th:text="${p.price}"></td>
+			<td th:text="${p.edate}"></td>
+			<td th:text="${p.stock}"></td>
+			<td th:text="${p.category}"></td>
+			<td><img th:src="${p.imgurl1}" th:width="50px" th:height="50px"
+				th:alt="laptopimg" /></td>
+			<td th:text="${p.quantity}"></td>
+			<td th:text="${p.quantity * p.price}"></td>
+
+
+			
+<!-- 			<td> -->
+<!-- 				<form action="increasecartitem"> -->
+<!-- 					<input type="hidden" name="id" th:value="${p.id}" /> <input -->
+<!-- 						type="hidden" name="name" th:value="${p.name}" /> <input -->
+<!-- 						type="hidden" name="brand" th:value="${p.brand}" /> <input -->
+<!-- 						type="hidden" name="price" th:value="${p.price}" /> <input -->
+<!-- 						type="hidden" name="edate" th:value="${p.edate}" /> <input -->
+<!-- 						type="hidden" name="stock" th:value="${p.stock}" /> <input -->
+<!-- 						type="hidden" name="category" th:value="${p.category}" /> <input -->
+<!-- 						type="hidden" name="imgurl1" th:value="${p.imgurl1}" /><input -->
+<!-- 						type="hidden" name="quantity" th:value="${1}" /> <input -->
+<!-- 						type="submit" value="Add" /> -->
+<!-- 				</form> -->
+<!-- 			</td> -->
+<!-- 			<td> -->
+<!-- 				<form action="decreasecartitem"> -->
+<!-- 					<input type="hidden" name="id" th:value="${p.id}" /> <input -->
+<!-- 						type="hidden" name="name" th:value="${p.name}" /> <input -->
+<!-- 						type="hidden" name="brand" th:value="${p.brand}" /> <input -->
+<!-- 						type="hidden" name="price" th:value="${p.price}" /> <input -->
+<!-- 						type="hidden" name="edate" th:value="${p.edate}" /> <input -->
+<!-- 						type="hidden" name="stock" th:value="${p.stock}" /> <input -->
+<!-- 						type="hidden" name="category" th:value="${p.category}" /> <input -->
+<!-- 						type="hidden" name="imgurl1" th:value="${p.imgurl1}" /><input -->
+<!-- 						type="hidden" name="quantity" th:value="${1}" /> <input -->
+<!-- 						type="submit" value="Remove" /> -->
+<!-- 				</form> -->
+<!-- 			</td> -->
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>-----------------</td>
+			<td>-----------------</td>
+			<td>-----------------</td>
+			<td></td>
+			<td></td>
+
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td style="text-align: right;">Total:</td>
+			<td th:text="' '+${session.totalAmount}"></td>
+			<td></td>
+			<td></td>
+
+		</tr>
+
+	</table>
+
+
+	<hr>
+	<h1>Sign in</h1>
+	<form action="login">
+	   <p style="color:red;" th:if="errorIncorrectInfo" th:text="${errorIncorrectInfo}"></p>
+		<div class="form-group">
+			<label for="exampleInputEmail1">Email address</label> <input
+				type="email" name="email" class="form-control" id="exampleInputEmail1"
+				aria-describedby="emailHelp" placeholder="Enter email"> <small
+				id="emailHelp" class="form-text text-muted">We'll never
+				share your email with anyone else.</small>
+		</div>
+		<div class="form-group">
+			<label for="exampleInputPassword1">Password</label> <input
+				type="password" name="password" class="form-control" id="exampleInputPassword1"
+				placeholder="Password">
+		</div>
+
+		<button type="submit" class="btn btn-primary">Login</button>
+	</form>
+
+	<br><a href=""  class="btn-primary">Forgot Your Password</a><br><br>
+	<form>
+		<button formaction="createNewCustomerAccount" type="submit" class="btn btn-primary">Create an Account</button>
+	</form>
+</body>
+</html>

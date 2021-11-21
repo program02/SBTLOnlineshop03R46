@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+	integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<p th:text="'Total Category in Cart: ' +${totalcategoryadded}">0</p>
+		<p th:text="'Total items in Cart: ' +${totalitemsadded}">0</p>
+		<p th:text="'Total Cost in Cart: ' +${totalAmount}">0</p>
+		<form action='addtocartpage'>
+			<input type="submit" value="Show Cart" />
+		</form>
+		<hr>
+		<div class="row row-cols-1 row-cols-md-4">
+			<div class="col mb-4" th:each="p:${products}">
+				<div class="card">
+					<img th:src="${p.imgurl1}" th:width="200px" th:height="200px"
+						class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title" th:text="${p.name}">Card title</h5>
+						<p class="card-text">This is a longer card with supporting
+							text below as a natural lead-in to additional content. This
+							content is a little bit longer.</p>
+
+					</div>
+					<form action='addtocart'>
+						<input type="hidden" name="id" th:value="${p.id}" /> <input
+							type="hidden" name="name" th:value="${p.name}" /> <input
+							type="hidden" name="brand" th:value="${p.brand}" /> <input
+							type="hidden" name="price" th:value="${p.price}" /> <input
+							type="hidden" name="edate" th:value="${p.edate}" /> <input
+							type="hidden" name="stock" th:value="${p.stock}" /> <input
+							type="hidden" name="category" th:value="${p.category}" /> <input
+							type="hidden" name="imgurl1" th:value="${p.imgurl1}" /><input
+							type="number" min="1" max="5" name="quantity" th:value="${1}"
+							value="1" style="width: 60px; height:35px;" /> <input style="margin-bottom: 7px" class="btn btn-primary" type="submit" value="Add To Cart" /> 
+					</form>
+				</div>
+			</div>
+			<!-- <div class="col mb-4">
+				<div class="card">
+					<img src="..." class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+						<p class="card-text">This is a longer card with supporting
+							text below as a natural lead-in to additional content. This
+							content is a little bit longer.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col mb-4">
+				<div class="card">
+					<img src="..." class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+						<p class="card-text">This is a longer card with supporting
+							text below as a natural lead-in to additional content.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col mb-4">
+				<div class="card">
+					<img src="..." class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+						<p class="card-text">This is a longer card with supporting
+							text below as a natural lead-in to additional content. This
+							content is a little bit longer.</p>
+					</div>
+				</div>
+			</div> -->
+		</div>
+
+
+
+		<!-- 	<table> -->
+		<!-- 		<tr th:each="p:${products}"> -->
+		<!-- 			<td th:text="${p.id}"></td> -->
+		<!-- 			<td th:text="${p.name}"></td> -->
+		<!-- 			<td th:text="${p.brand}"></td> -->
+		<!-- 			<td th:text="${p.price}"></td> -->
+		<!-- 			<td th:text="${p.edate}"></td> -->
+		<!-- 			<td th:text="${p.stock}"></td> -->
+		<!-- 			<td th:text="${p.category}"></td> -->
+		<!-- 			<td><img th:src="${p.imgurl1}" th:width="50px" th:height="50px" -->
+		<!-- 				th:alt="laptopimg" /></td> -->
+		<!-- 			<td> -->
+		<!-- 				<form action='addtocart'> -->
+		<!-- 					<input type="hidden" name="id" th:value="${p.id}" /> <input -->
+		<!-- 						type="hidden" name="name" th:value="${p.name}" /> <input -->
+		<!-- 						type="hidden" name="brand" th:value="${p.brand}" /> <input -->
+		<!-- 						type="hidden" name="price" th:value="${p.price}" /> <input -->
+		<!-- 						type="hidden" name="edate" th:value="${p.edate}" /> <input -->
+		<!-- 						type="hidden" name="stock" th:value="${p.stock}" /> <input -->
+		<!-- 						type="hidden" name="category" th:value="${p.category}" /> <input -->
+		<!-- 						type="hidden" name="imgurl1" th:value="${p.imgurl1}" /><input -->
+		<!-- 						type="number" min="1" max="5" name="quantity" th:value="${1}" value="1"/> <input -->
+		<!-- 						type="submit" value="Add To Cart" /> -->
+		<!-- 				</form> -->
+		<!-- 			</td> -->
+		<!-- 		</tr> -->
+		<!-- 	</table> -->
+	</div>
+</body>
+</html>

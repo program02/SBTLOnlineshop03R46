@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<body>
+
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Brand</th>
+			<th>Price</th>
+			<th>Date</th>
+			<th>Stock</th>
+			<th>Category</th>
+			<th>Url</th>
+			<th>Quantity</th>
+			<th>Total</th>
+		</tr>
+		<tr th:each="p:${session.addtocartlist}">
+			<td th:text="${p.id}"></td>
+			<td th:text="${p.name}"></td>
+			<td th:text="${p.brand}"></td>
+			<td th:text="${p.price}"></td>
+			<td th:text="${p.edate}"></td>
+			<td th:text="${p.stock}"></td>
+			<td th:text="${p.category}"></td>
+			<td><img th:src="${p.imgurl1}" th:width="50px" th:height="50px"
+				th:alt="laptopimg" /></td>
+			<td th:text="${p.quantity}"></td>
+			<td th:text="${p.quantity * p.price}"></td>
+
+
+			
+<!-- 			<td> -->
+<!-- 				<form action="increasecartitem"> -->
+<!-- 					<input type="hidden" name="id" th:value="${p.id}" /> <input -->
+<!-- 						type="hidden" name="name" th:value="${p.name}" /> <input -->
+<!-- 						type="hidden" name="brand" th:value="${p.brand}" /> <input -->
+<!-- 						type="hidden" name="price" th:value="${p.price}" /> <input -->
+<!-- 						type="hidden" name="edate" th:value="${p.edate}" /> <input -->
+<!-- 						type="hidden" name="stock" th:value="${p.stock}" /> <input -->
+<!-- 						type="hidden" name="category" th:value="${p.category}" /> <input -->
+<!-- 						type="hidden" name="imgurl1" th:value="${p.imgurl1}" /><input -->
+<!-- 						type="hidden" name="quantity" th:value="${1}" /> <input -->
+<!-- 						type="submit" value="Add" /> -->
+<!-- 				</form> -->
+<!-- 			</td> -->
+<!-- 			<td> -->
+<!-- 				<form action="decreasecartitem"> -->
+<!-- 					<input type="hidden" name="id" th:value="${p.id}" /> <input -->
+<!-- 						type="hidden" name="name" th:value="${p.name}" /> <input -->
+<!-- 						type="hidden" name="brand" th:value="${p.brand}" /> <input -->
+<!-- 						type="hidden" name="price" th:value="${p.price}" /> <input -->
+<!-- 						type="hidden" name="edate" th:value="${p.edate}" /> <input -->
+<!-- 						type="hidden" name="stock" th:value="${p.stock}" /> <input -->
+<!-- 						type="hidden" name="category" th:value="${p.category}" /> <input -->
+<!-- 						type="hidden" name="imgurl1" th:value="${p.imgurl1}" /><input -->
+<!-- 						type="hidden" name="quantity" th:value="${1}" /> <input -->
+<!-- 						type="submit" value="Remove" /> -->
+<!-- 				</form> -->
+<!-- 			</td> -->
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>-----------------</td>
+			<td>-----------------</td>
+			<td>-----------------</td>
+			<td></td>
+			<td></td>
+
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td style="text-align: right;">Total:</td>
+			<td th:text="' '+${session.totalAmount}"></td>
+			<td></td>
+			<td></td>
+
+		</tr>
+
+	</table>
+
+
+	<hr>
+	<h1>Shipping</h1>
+	<p th:text="${session.customer.id}" th:unless="${session == null}"> . </p>
+	<hr>
+	<form action="payment" method="POST">
+		<div class="form-group">
+			<label for="firstname">First Name</label> <input type="text"
+				th:text="${session.customer.id}" class="form-control"
+				id="firstname" name="firstname" aria-describedby="firstNameHelp"
+				placeholder="Enter FirstName">
+		</div>
+		<div class="form-group">
+			<label for="lastname">Last Name</label> <input type="text" th:text="${session.customer.id}"
+				class="form-control" id="lastname" name="lastname" aria-describedby="lastNameHelp"
+				placeholder="Enter LastName">
+		</div>
+
+		<div class="form-group">
+			<label for="address1">Address</label> <input type="text" th:text="${session.customer.id}"
+				class="form-control" id="address1" aria-describedby="address1"
+				placeholder="Enter address1">
+		</div>
+
+
+		<div class="form-group">
+			<label for="division">Division</label> <input type="text" th:text="${session.customer.id}"
+				class="form-control" id="division" aria-describedby="division"
+				placeholder="Enter division">
+		</div>
+		<div class="form-group">
+			<label for="city">City</label> <input type="text" th:text="${session.customer.id}"
+				class="form-control" id="city" aria-describedby="city"
+				placeholder="Enter city">
+		</div>
+		<div class="form-group">
+			<label for="area">Area</label> <input type="text" th:text="${session.customer.id}"
+				class="form-control" id="area" aria-describedby="area"
+				placeholder="Enter area">
+		</div>
+		<div class="form-group">
+			<label for="country">Country</label> <input type="text" th:text="${session.customer.id}"
+				class="form-control" id="country" aria-describedby="country"
+				placeholder="Enter country">
+		</div>
+		<div class="form-group">
+			<label for="phone">Phone</label> <input type="text" th:text="${session.customer.id}"
+				class="form-control" id="phone" aria-describedby="phone"
+				placeholder="Enter phone">
+		</div>
+		<div class="form-group">
+			<label for="email">Email</label> <input type="email" th:text="${session.customer.email}"
+				class="form-control" id="email" aria-describedby="email"
+				placeholder="Enter email">
+		</div>
+		<div class="form-group">
+			<label for="method1">Shipping Methods</label> <input type="text"
+				class="form-control" id="method1" aria-describedby="method1"
+				disabled="disabled"
+				placeholder="60	Order will be delivered on or before 5 days	Regular Delivery">
+		</div>
+
+		<p>Note:Order will be delivered on or before 5 days Regular
+			Delivery</p>
+		<button type="submit" class="btn btn-primary">Next for
+			Payment</button>
+	</form>
+
+</body>
+</html>

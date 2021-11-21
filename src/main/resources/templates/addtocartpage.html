@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Brand</th>
+			<th>Price</th>
+			<th>Date</th>
+			<th>Stock</th>
+			<th>Category</th>
+			<th>Url</th>
+			<th>Quantity</th>
+			<th>Total</th>
+		</tr>
+		<tr th:each="p:${addtocartlist}">
+			<td th:text="${p.id}"></td>
+			<td th:text="${p.name}"></td>
+			<td th:text="${p.brand}"></td>
+			<td th:text="${p.price}"></td>
+			<td th:text="${p.edate}"></td>
+			<td th:text="${p.stock}"></td>
+			<td th:text="${p.category}"></td>
+			<td><img th:src="${p.imgurl1}" th:width="50px" th:height="50px"
+				th:alt="laptopimg" /></td>
+			<td th:text="${p.quantity}"></td>
+			<td th:text="${p.quantity * p.price}"></td>
+
+
+			
+			<td>
+				<form action="increasecartitem">
+					<input type="hidden" name="id" th:value="${p.id}" /> <input
+						type="hidden" name="name" th:value="${p.name}" /> <input
+						type="hidden" name="brand" th:value="${p.brand}" /> <input
+						type="hidden" name="price" th:value="${p.price}" /> <input
+						type="hidden" name="edate" th:value="${p.edate}" /> <input
+						type="hidden" name="stock" th:value="${p.stock}" /> <input
+						type="hidden" name="category" th:value="${p.category}" /> <input
+						type="hidden" name="imgurl1" th:value="${p.imgurl1}" /><input
+						type="hidden" name="quantity" th:value="${1}" /> <input
+						type="submit" value="Add" />
+				</form>
+			</td>
+			<td>
+				<form action="decreasecartitem">
+					<input type="hidden" name="id" th:value="${p.id}" /> <input
+						type="hidden" name="name" th:value="${p.name}" /> <input
+						type="hidden" name="brand" th:value="${p.brand}" /> <input
+						type="hidden" name="price" th:value="${p.price}" /> <input
+						type="hidden" name="edate" th:value="${p.edate}" /> <input
+						type="hidden" name="stock" th:value="${p.stock}" /> <input
+						type="hidden" name="category" th:value="${p.category}" /> <input
+						type="hidden" name="imgurl1" th:value="${p.imgurl1}" /><input
+						type="hidden" name="quantity" th:value="${1}" /> <input
+						type="submit" value="Remove" />
+				</form>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>-----------------</td>
+			<td>-----------------</td>
+			<td>-----------------</td>
+			<td></td>
+			<td></td>
+
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td style="text-align: right;">Total:</td>
+			<td th:text="' '+${totalAmount}"></td>
+			<td></td>
+			<td></td>
+
+		</tr>
+
+	</table>
+	<form action='shop2'>
+		<input type="submit" formaction="shop2" value="Continue to shop" />
+		<input type="submit" formaction="checkout" value="Checkout" />
+	</form>
+	
+	
+	
+</body>
+</html>
