@@ -23,7 +23,7 @@
 			<th>Quantity</th>
 			<th>Total</th>
 		</tr>
-		<tr th:each="p:${session.addtocartlist}">
+		<tr th:each="p:${session.addtocartlist_s}">
 			<td th:text="${p.id}"></td>
 			<td th:text="${p.name}"></td>
 			<td th:text="${p.brand}"></td>
@@ -92,7 +92,7 @@
 			<td></td>
 			<td></td>
 			<td style="text-align: right;">Total:</td>
-			<td th:text="' '+${session.totalAmount}"></td>
+			<td th:text="' '+${session.totalAmount_s}"></td>
 			<td></td>
 			<td></td>
 

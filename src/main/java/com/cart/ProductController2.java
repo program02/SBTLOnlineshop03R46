@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 //@SessionAttributes("customer")
+@SessionAttributes({"addtocartlist_s","totalitemsadded_s","totalcategoryadded_s","totalAmount_s"})
+
 @Controller
 public class ProductController2 {
 	ShoppingCart cart = new ShoppingCart();
@@ -82,12 +84,12 @@ public class ProductController2 {
 	// checkout
 	@RequestMapping(value = "/checkout")
 	public String checkout(Model m, HttpServletRequest req) {
-//		m.addAttribute("addtocartlist", cart.item);
-//		m.addAttribute("totalcategoryadded", cart.getTotalCategoryOfProduct());
-//		m.addAttribute("totalitemsadded", cart.getTotalNumberOfProduct());
-//		m.addAttribute("totalAmount", cart.getTotalAmount());
-		req.getSession().setAttribute("addtocartlist", cart.item);
-		req.getSession().setAttribute("totalAmount", cart.getTotalAmount());
+		m.addAttribute("addtocartlist_s", cart.item);
+		m.addAttribute("totalcategoryadded_s", cart.getTotalCategoryOfProduct());
+		m.addAttribute("totalitemsadded_s", cart.getTotalNumberOfProduct());
+		m.addAttribute("totalAmount_s", cart.getTotalAmount());
+		//req.getSession().setAttribute("addtocartlist", cart.item); //or use at controller @SessionAttributes({"addtocartlist","totalitemsadded","totalcategoryadded","totalAmount"})
+		//req.getSession().setAttribute("totalAmount", cart.getTotalAmount());
 		return "checkout";
 	}
 
